@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Predictor Pro</title>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="apple-nav">
+        <div class="nav-content">
+            <svg class="apple-icon" viewBox="0 0 14 18" width="14" height="18" fill="currentColor">
+                <path d="M7.001 0c-1.465 0-2.653 1.258-2.653 2.813 0 1.554 1.188 2.812 2.653 2.812 1.464 0 2.652-1.258 2.652-2.812C9.653 1.258 8.465 0 7.001 0zM12.247 17.587c-1.12.92-2.61.91-3.693.18-.845-.56-1.517-.55-2.338.01-1.104.75-2.61.76-3.754-.18C.61 16.037.03 14.37.003 12.6c-.053-3.41 1.76-5.83 4.417-6.07 1.055-.1 2.052.48 2.58.48.538 0 1.7-.68 2.95-.57 1.294.1 2.45.69 3.125 1.7-.09.06-1.85 1.14-1.83 3.32.02 2.64 2.19 3.53 2.22 3.54-.04.14-1.04 3.25-3.218 5.587z"></path>
+            </svg>
+            <span>Stock Predictor Pro</span>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <header class="hero">
+            <h2 class="super-title">Pro Performance.</h2>
+            <h1 class="main-title">Predict the market.<br>With pure intelligence.</h1>
+            <p class="subtitle">Powered by advanced Gated Recurrent Unit deep learning algorithms.</p>
+        </header>
+
+        <main>
+            <div class="controls-card">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="tickerInput">Ticker Symbol</label>
+                        <input type="text" id="tickerInput" value="RELIANCE.NS" placeholder="RELIANCE.NS">
+                    </div>
+                    <div class="input-group">
+                        <label for="epochsInput">Neural Epochs</label>
+                        <input type="number" id="epochsInput" value="10" min="1" max="50">
+                    </div>
+                    <button id="predictBtn" class="apple-btn">Analyze Now</button>
+                </div>
+            </div>
+
+            <div id="statusBox" class="status-box hidden">
+                <div class="spinner"></div>
+                <span id="statusText">Initializing Neural Engine...</span>
+            </div>
+
+            <div class="results-grid hidden" id="resultsContainer">
+                <div class="metric-card">
+                    <h3>Latest Close</h3>
+                    <div class="value" id="latestCloseValue">--</div>
+                    <div class="date" id="latestCloseDate">--</div>
+                </div>
+                <div class="metric-card highlight">
+                    <h3>Next Day Projection</h3>
+                    <div class="value" id="predictedValue">--</div>
+                    <div class="delta" id="predictedDelta">--</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Model Error (MSE)</h3>
+                    <div class="value" id="modelLossValue">--</div>
+                    <div class="date">Lower indicates higher precision</div>
+                </div>
+            </div>
+
+            <div class="chart-container hidden" id="chartWrapper">
+                <canvas id="stockChart"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <!-- Custom Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
